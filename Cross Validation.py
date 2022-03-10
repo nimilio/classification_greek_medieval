@@ -114,3 +114,42 @@ print('\n')
 
 print ("The overall mean F1 score is: ",np.array(f1_scores).mean()*100)
 print ("and its standard deviation is: ",np.array(f1_scores).std()*100)
+
+
+
+# --------------------------|
+#   REPEATED CROSS VAL      |
+# --------------------------|
+
+# retrieve accuracies and best features from each trial
+
+from sklearn.model_selection import RepeatedKFold
+
+
+accuracy2 = []
+f1_scores2 = []
+
+cv2 = RepeatedKFold(n_splits=5, n_repeats=3, random_state=0)
+
+cv2.get_n_splits(X_train,y_train)
+for train_index, test_index in cv2.split(X_train,y_train):
+    #print('Train:',train_index, 'Validation:', test_index)
+    X1_train,X1_test = X_train.iloc[train_index], X_train.iloc[test_index]
+    y1_train,y1_test = y_train.iloc[train_index], y_train.iloc[test_index]
+    rf.fit(X1_train,y1_train)
+    prediction = rf.predict(X1_test)
+    score = accuracy_score(prediction,y1_test)
+    f1 = f1_score(prediction,y1_test, average='weighted')
+
+    for name, importance in zip(X_train.columns, rf.feature_importances_):
+        print(name, "=", importance)
+    print('\n')
+
+    accuracy2.append(score)
+    f1_scores2.append(f1)
+    
+
+print(accuracy2)
+print(f1_scores2)
+
+np.array(accuracy2).mean()
