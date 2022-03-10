@@ -1,13 +1,12 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 from pprint import pprint
-import matplotlib.pyplot as plt
+
 
 
 # ---------------------|
