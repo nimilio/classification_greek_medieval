@@ -5,4 +5,7 @@ Novel greek medieval text classification using stylometric features with Supervi
 Pre-processing files:
 
 -> epigram_process.py
--> gianitsos_features.py
+
+-> gianitsos_features.py (create the csv files with the features of the documents)
+
+
