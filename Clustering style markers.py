@@ -105,7 +105,6 @@ plt.scatter(reduced_cluster_centers[:, 0], reduced_cluster_centers[:,1], marker=
 #    HOMOGENEITY SCORES     |
 # --------------------------|
  
-X = df.iloc[:, 1:16].values  #from second column and ahead
 homogeneity_score(df.Cluster, kmeans.labels_)
 
 
